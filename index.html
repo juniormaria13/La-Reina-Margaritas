@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Reina Margaritas — Mexican Kitchen & Cantina · Ozark, MO</title>
+<meta name="description" content="Authentic Mexican cuisine, signature handcrafted margaritas, and royal hospitality in the heart of the Ozarks. Where every guest wears the crown.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Outfit:wght@300;400;500;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --terracotta: #E8390E;
+    --terracotta-deep: #C42B00;
+    --gold: #FFB800;
+    --gold-soft: #FFD547;
+    --cream: #FFF8F0;
+    --cream-warm: #FFE8D0;
+    --bone: #FFFAF5;
+    --ink: #1A0500;
+    --ink-soft: #4A1500;
+    --verde: #00A550;
+    --verde-deep: #006B35;
+    --shadow-warm: rgba(232, 57, 14, 0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bone);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .display { font-family: 'Fraunces', serif; font-variation-settings: "SOFT" 50, "WONK" 0; }
+  .script { font-family: 'Caveat', cursive; }
+
+  /* ============ NAVIGATION ============ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245, 239, 227, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(138, 47, 26, 0.08);
+    transition: padding 0.3s ease;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo-img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  .crown-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--terracotta);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-cta:hover {
+    background: var(--terracotta);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(138, 47, 26, 0.25);
+  }
+
+  .menu-toggle { display: none; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-shape {
+    position: absolute;
+    top: -10%;
+    right: -15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--gold-soft) 0%, transparent 65%);
+    opacity: 0.25;
+    z-index: 0;
+    animation: floatSlow 20s ease-in-out infinite;
+  }
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 20px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-weight: 300;
+  }
+
+  .hero h1 .crown-accent {
+    display: inline-block;
+    color: var(--gold);
+    font-style: normal;
+    transform: translateY(-0.1em);
+    margin: 0 0.1em;
+    animation: subtleSway 4s ease-in-out infinite;
+  }
+
+  @keyframes subtleSway {
+    0%, 100% { transform: translateY(-0.1em) rotate(-3deg); }
+    50% { transform: translateY(-0.15em) rotate(3deg); }
+  }
+
+  .hero-script {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--cream);
+    padding: 1.1rem 2.25rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(138, 47, 26, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(138, 47, 26, 0.35);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 1.1rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--ink);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .hero-meta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero-meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  .hero-meta-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    height: 75vh;
+    z-index: 2;
+  }
+
+  .hero-image-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%;
+    height: 90%;
+    border-radius: 280px 280px 30px 30px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-deep) 100%);
+    box-shadow: 0 30px 80px rgba(138, 47, 26, 0.3);
+    animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+
+  .hero-image-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: normal;
+  }
+
+  .hero-image-accent {
+    position: absolute;
+    bottom: 5%;
+    left: -5%;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid var(--bone);
+    box-shadow: 0 20px 50px rgba(138, 47, 26, 0.25);
+    animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+    z-index: 3;
+  }
+
+  .hero-image-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-badge {
+    position: absolute;
+    top: 8%;
+    left: -8%;
+    background: var(--cream);
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    box-shadow: 0 10px 30px var(--shadow-warm);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 3;
+    animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+  }
+
+  .hero-badge-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-badge-text {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ SECTION DIVIDER ============ */
+  .marquee {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 35s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  .marquee-item {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .marquee-item::after {
+    content: '✦';
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ STORY SECTION ============ */
+  .story {
+    padding: 8rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .story-images {
+    position: relative;
+    height: 600px;
+  }
+
+  .story-img-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 75%;
+    background: var(--terracotta);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-warm);
+  }
+
+  .story-img-2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    height: 60%;
+    background: var(--verde);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-warm);
+    z-index: 2;
+  }
+
+  .story-img-1 img, .story-img-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-decoration {
+    position: absolute;
+    top: -40px;
+    right: 10%;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--terracotta);
+    transform: rotate(-8deg);
+    z-index: 3;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-eyebrow::before {
+    content: '✦';
+    color: var(--gold);
+  }
+
+  .story h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 100;
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .story h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 300;
+  }
+
+  .story-text {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    max-width: 540px;
+  }
+
+  .story-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 540px;
+  }
+
+  .story-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .story-feature-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    color: var(--terracotta);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .story-feature-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ============ MENU SHOWCASE ============ */
+  .menu-section {
+    padding: 8rem 3rem;
+    background: var(--bone);
+    position: relative;
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .menu-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .menu-header h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .menu-header p {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .dish-card {
+    background: var(--cream);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                outline 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    outline: 2px solid transparent;
+  }
+
+  .menu-grid .dish-card:nth-child(1) { transition-delay: 0s; }
+  .menu-grid .dish-card:nth-child(2) { transition-delay: 0.15s; }
+  .menu-grid .dish-card:nth-child(3) { transition-delay: 0.3s; }
+
+  .dish-card:nth-child(2) {
+    transform: translateY(40px);
+  }
+
+  .dish-card:hover {
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 40px 80px var(--shadow-warm);
+    outline: 2px solid var(--gold);
+  }
+
+  .dish-card:nth-child(2):hover {
+    transform: translateY(-14px) scale(1.02);
+  }
+
+  .dish-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+    background: var(--terracotta);
+  }
+
+  .dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dish-card:hover .dish-image img {
+    transform: scale(1.12);
+  }
+
+  /* Overlay que sube al hacer hover */
+  .dish-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(26, 5, 0, 0.92) 0%,
+      rgba(232, 57, 14, 0.55) 50%,
+      transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.75rem 1.5rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 2;
+  }
+
+  .dish-card:hover .dish-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .dish-overlay-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.9rem;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .dish-overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.55rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    width: fit-content;
+    transform: translateY(6px);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+  }
+
+  .dish-card:hover .dish-overlay-btn {
+    transform: translateY(0);
+  }
+
+  .dish-tag {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    background: var(--bone);
+    color: var(--terracotta);
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+  }
+
+  .dish-card:hover .dish-tag {
+    opacity: 0;
+  }
+
+  .dish-content {
+    padding: 1.75rem 1.5rem 2rem;
+  }
+
+  .dish-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .dish-description {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .menu-cta {
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  /* ============ CANTINA / COCKTAILS ============ */
+  .cantina {
+    padding: 8rem 3rem;
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cantina::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--terracotta) 0%, transparent 60%);
+    opacity: 0.35;
+    z-index: 0;
+  }
+
+  .cantina-header {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .cantina-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .cantina-header h2 em {
+    font-style: italic;
+    color: var(--gold-soft);
+    font-weight: 300;
+  }
+
+  .cantina-header p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(245, 239, 227, 0.8);
+    max-width: 420px;
+  }
+
+  .cocktails-grid {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cocktail-card {
+    text-align: center;
+    transition: transform 0.4s ease;
+  }
+
+  .cocktail-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .cocktail-image {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+    border: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .cocktail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cocktail-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .cocktail-desc {
+    font-size: 0.85rem;
+    color: rgba(245, 239, 227, 0.65);
+    line-height: 1.5;
+    padding: 0 1rem;
+  }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials {
+    padding: 8rem 3rem;
+    background: var(--cream-warm);
+    position: relative;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .testimonials-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 100;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .testimonials-header h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .testimonials-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .testimonials-rating span {
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--bone);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-size: 4rem;
+    color: var(--gold-soft);
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .testimonial-stars {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .testimonial-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .testimonial-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+  }
+
+  .testimonial-name {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 0.9rem;
+  }
+
+  .testimonial-source {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  /* ============ VISIT / CONTACT ============ */
+  .visit {
+    padding: 8rem 3rem;
+    background: var(--bone);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .visit-content h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .visit-content h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .visit-script {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--terracotta);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .visit-info {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--terracotta);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  .info-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  a.info-value:hover { color: var(--terracotta); }
+
+  .hours-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px var(--shadow-warm);
+    border: 1px solid rgba(255, 184, 0, 0.2);
+  }
+
+  .hours-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--terracotta) 0%, transparent 60%);
+    opacity: 0.4;
+  }
+
+  .hours-card-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hours-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hours-list {
+    list-style: none;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(245, 239, 227, 0.12);
+    font-size: 0.95rem;
+  }
+
+  .hours-list li:last-child { border-bottom: none; }
+
+  .hours-day {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .hours-time {
+    font-family: 'Fraunces', serif;
+    color: var(--gold-soft);
+    font-style: italic;
+  }
+
+  .hours-time.closed { color: rgba(245, 239, 227, 0.4); }
+
+  /* ============ CTA BANNER ============ */
+  .cta-banner {
+    background: var(--terracotta);
+    color: var(--cream);
+    padding: 6rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before, .cta-banner::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-soft) 0%, transparent 70%);
+    opacity: 0.2;
+  }
+
+  .cta-banner::before { top: -50%; left: -10%; }
+  .cta-banner::after { bottom: -50%; right: -10%; }
+
+  .cta-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-banner h2 em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .cta-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+  }
+
+  .cta-banner .btn-primary {
+    background: var(--cream);
+    color: var(--terracotta-deep);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .cta-banner .btn-primary:hover {
+    background: var(--bone);
+    color: var(--ink);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 5rem 3rem 2rem;
+  }
+
+  .footer-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+  }
+
+  .footer-tagline {
+    color: rgba(245, 239, 227, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-col a {
+    color: rgba(245, 239, 227, 0.75);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: var(--gold-soft); }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(245, 239, 227, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .footer-social a:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  .footer-social svg {
+    width: 16px;
+    height: 16px;
+    color: var(--cream);
+  }
+
+  .footer-bottom {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245, 239, 227, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba(245, 239, 227, 0.5);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .hero, .story, .visit, .cantina-header { grid-template-columns: 1fr; }
+    .menu-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .cocktails-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .dish-card:nth-child(2) { transform: translateY(0); }
+    .dish-card:nth-child(2):hover { transform: translateY(-8px); }
+    .hero-visual { height: 60vh; margin-top: 2rem; }
+    .story-images { height: 500px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .menu-toggle span {
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+    .nav-cta { padding: 0.6rem 1rem; font-size: 0.7rem; }
+    .hero { padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .hero-visual { height: 50vh; }
+    .hero-image-accent { width: 140px; height: 140px; }
+    .hero-meta { gap: 1.5rem; }
+    .story, .menu-section, .cantina, .testimonials, .visit, .cta-banner { padding: 5rem 1.5rem; }
+    .menu-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .marquee-item { font-size: 1.1rem; gap: 2.5rem; }
+    .visit-info { margin-top: 2rem; }
+    .hours-card { padding: 2rem 1.5rem; }
+    .hours-card h3 { font-size: 2rem; }
+  }
+
+  /* ============ SCROLL ANIMATIONS ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav>
+  <div class="nav-logo">
+    <img src="img/rtgg.webp" alt="La Reina Margaritas" class="nav-logo-img">
+    La Reina Margaritas
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#story">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="location.html">Location</a></li>
+  </ul>
+  <a href="#reserve" class="nav-cta">Reserve a Table</a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-shape"></div>
+  
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mexican Kitchen & Cantina</div>
+    <span class="hero-script">where every guest</span>
+    <h1>Wears the <em>Crown</em><span class="crown-accent">♛</span></h1>
+    <p class="hero-description">
+      Authentic Mexican flavors meet Ozark warmth in our reimagined cantina. Handcrafted signature margaritas, slow-cooked traditional dishes, and royal hospitality &mdash; served with love in every plate.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#reserve" class="btn-primary">
+        Reserve Your Table
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M13 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#menu" class="btn-secondary">View Menu</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Find Us</span>
+        <span class="hero-meta-value">Ozark, Missouri</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Open</span>
+        <span class="hero-meta-value">7 Days a Week</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Reserve</span>
+        <span class="hero-meta-value">(417) 598-6327</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-badge">
+      <span class="hero-badge-stars">★★★★★</span>
+      <span class="hero-badge-text">Loved by locals</span>
+    </div>
+    <div class="hero-image-main">
+      <img src="https://lareinamargaritas.com/wp-content/uploads/2026/04/Quesabirria-Tacos-LRM-2026-1024x683.jpg" alt="Quesabirria tacos">
+    </div>
+    <div class="hero-image-accent">
+      <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/49-1.png" alt="Signature margarita">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Signature Margaritas</span>
+    <span class="marquee-item">Authentic Mexican Cuisine</span>
+    <span class="marquee-item">Royal Hospitality</span>
+    <span class="marquee-item">Handcrafted with Love</span>
+    <span class="marquee-item">Ozark's Hidden Gem</span>
+    <span class="marquee-item">Signature Margaritas</span>
+    <span class="marquee-item">Authentic Mexican Cuisine</span>
+    <span class="marquee-item">Royal Hospitality</span>
+    <span class="marquee-item">Handcrafted with Love</span>
+    <span class="marquee-item">Ozark's Hidden Gem</span>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="story">
+  <div class="story-images reveal">
+    <div class="story-img-1">
+      <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/86d685f5-d1d3-4ccc-8a84-b2724f13539d-1024x844.jpeg" alt="Burrito Mexicano">
+    </div>
+    <div class="story-img-2">
+      <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/b82a2d75-3242-4a4f-9a07-9d9247440829-e1763489420685-1024x844.jpeg" alt="Mole Poblano">
+    </div>
+    <span class="story-decoration">¡auténtico!</span>
+  </div>
+  <div class="reveal">
+    <div class="section-eyebrow">Our Story</div>
+    <h2>Born from a love for <em>tradition</em> & flavor.</h2>
+    <p class="story-text">
+      La Reina Margaritas is a celebration of culture and royalty &mdash; born from the belief that every guest deserves to feel like a king or queen. Our cantina brings together handcrafted shaken margaritas, elevated modern Mexican dishes, and Ozark favorites in one warm, vibrant space.
+    </p>
+    <p class="story-text">
+      Inspired by tradition and crafted with love, every plate and every drink is prepared with fresh ingredients, bold flavors, and a touch of elegance &mdash; just for you.
+    </p>
+    <div class="story-features">
+      <div class="story-feature">
+        <span class="story-feature-num">100%</span>
+        <span class="story-feature-label">Fresh ingredients, never frozen</span>
+      </div>
+      <div class="story-feature">
+        <span class="story-feature-num">15+</span>
+        <span class="story-feature-label">Years of culinary experience</span>
+      </div>
+      <div class="story-feature">
+        <span class="story-feature-num">7</span>
+        <span class="story-feature-label">Signature margarita varieties</span>
+      </div>
+      <div class="story-feature">
+        <span class="story-feature-num">∞</span>
+        <span class="story-feature-label">Reasons to come back</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu-section" id="menu">
+  <div class="menu-header reveal">
+    <div class="section-eyebrow" style="justify-content: center;">Royal Specialties</div>
+    <h2>Dishes fit for <em>royalty</em>.</h2>
+    <p>Bold, traditional, and prepared with the finest ingredients. Each dish tells a story of Mexican heritage reimagined with care.</p>
+  </div>
+  <div class="menu-grid">
+    <article class="dish-card reveal">
+      <div class="dish-image">
+        <span class="dish-tag">Signature</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/86d685f5-d1d3-4ccc-8a84-b2724f13539d-1024x844.jpeg" alt="Burrito Mexicano">
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Burrito Mexicano</span>
+          <span class="dish-overlay-btn">Ver platillo ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Burrito Mexicano</h3>
+        <p class="dish-description">Large flour tortilla filled with chicken fajita, sautéed onion, and red bell pepper. Smothered in salsa verde, cheese sauce, and roasted salsa roja. Served with rice & beans.</p>
+      </div>
+    </article>
+    <article class="dish-card reveal">
+      <div class="dish-image">
+        <span class="dish-tag">Must Try</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2026/04/Quesabirria-Tacos-LRM-2026-1024x683.jpg" alt="Quesabirrias">
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Quesabirrias</span>
+          <span class="dish-overlay-btn">Ver platillo ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Quesabirrias</h3>
+        <p class="dish-description">Our spectacular quesabirrias &mdash; tender, slow-braised birria, melted cheese, and a rich consomé for dipping. A blend of Mexican flavors you simply can't miss.</p>
+      </div>
+    </article>
+    <article class="dish-card reveal">
+      <div class="dish-image">
+        <span class="dish-tag">Traditional</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/b82a2d75-3242-4a4f-9a07-9d9247440829-e1763489420685-1024x844.jpeg" alt="Mole Poblano">
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Mole Poblano</span>
+          <span class="dish-overlay-btn">Ver platillo ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Mole Poblano</h3>
+        <p class="dish-description">Slow-cooked chicken smothered in rich mole made with roasted chiles, chocolate, nuts, and aromatic spices. Served with rice, borracho beans, and warm tortillas.</p>
+      </div>
+    </article>
+  </div>
+  <div class="menu-cta">
+    <a href="https://lareinamargaritas.com/menu/" class="btn-secondary">Explore Full Menu</a>
+  </div>
+</section>
+
+<!-- ============ CANTINA ============ -->
+<span id="gallery"></span><span id="events"></span>
+<section class="cantina" id="cantina">
+  <div class="cantina-header">
+    <div class="reveal">
+      <div class="section-eyebrow" style="color: var(--gold-soft);">The Cantina</div>
+      <h2>Crafted <em>cocktails</em>, unforgettable nights.</h2>
+    </div>
+    <div class="reveal">
+      <p>Discover our signature margaritas and craft cocktails &mdash; shaken with intention, poured with pride. From classic recipes to bold new creations, every drink is a small celebration.</p>
+    </div>
+  </div>
+  <div class="cocktails-grid">
+    <div class="cocktail-card reveal">
+      <div class="cocktail-image">
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/49-1.png" alt="Signature Margarita">
+      </div>
+      <h3 class="cocktail-name">La Reina</h3>
+      <p class="cocktail-desc">Our signature margarita with a house touch you won't forget.</p>
+    </div>
+    <div class="cocktail-card reveal">
+      <div class="cocktail-image">
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/50-1.png" alt="Mojito">
+      </div>
+      <h3 class="cocktail-name">Mojito</h3>
+      <p class="cocktail-desc">A wide variety of mojitos crafted just for you.</p>
+    </div>
+    <div class="cocktail-card reveal">
+      <div class="cocktail-image">
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/51-1.png" alt="Pineapple Margarita">
+      </div>
+      <h3 class="cocktail-name">Piña Margarita</h3>
+      <p class="cocktail-desc">Tropical, bright, and impossible to resist.</p>
+    </div>
+    <div class="cocktail-card reveal">
+      <div class="cocktail-image">
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/52-1.png" alt="Mexican Beers">
+      </div>
+      <h3 class="cocktail-name">Cerveza Mexicana</h3>
+      <p class="cocktail-desc">Imported and local beers to pair with every dish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-eyebrow" style="justify-content: center;">Loved by Our Guests</div>
+    <h2>What people are <em>saying</em>.</h2>
+    <div class="testimonials-rating">
+      ★★★★★ <span>Verified Google Reviews</span>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">Stopped by for a couple of drinks and they were fantastic. The building got a fresh remodel and is looking great. The menu looks awesome &mdash; definitely give this new place a try!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">C</div>
+        <div>
+          <div class="testimonial-name">ceht</div>
+          <div class="testimonial-source">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">The food is delicious and the margaritas are amazing! A wonderful spot with so much character &mdash; you can really feel the love put into every detail.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">L</div>
+        <div>
+          <div class="testimonial-name">Lau Guzman</div>
+          <div class="testimonial-source">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">Fuimos con mi familia y nos encantó. La atención es de lo mejor y los platillos exquisitos. Seguro que volveremos nuevamente.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">C</div>
+        <div>
+          <div class="testimonial-name">Cinthia Mejia</div>
+          <div class="testimonial-source">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<span id="contact"></span><span id="location"></span>
+<section class="visit" id="visit">
+  <div class="visit-content reveal">
+    <div class="section-eyebrow">Visit Us</div>
+    <span class="visit-script">come hungry,</span>
+    <h2>Leave like <em>royalty</em>.</h2>
+    <div class="visit-info">
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Address</div>
+          <a href="https://maps.google.com/?q=1511+W+State+Hwy+J+Ozark+MO+65721" class="info-value">1511 W State Hwy J<br>Ozark, MO 65721</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Reservations</div>
+          <a href="tel:4175986327" class="info-value">(417) 598-6327</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Email</div>
+          <a href="mailto:royalservice@lareinamargaritas.com" class="info-value">royalservice@lareinamargaritas.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hours-card reveal" id="reserve">
+    <div class="hours-card-eyebrow">Hours of Service</div>
+    <h3>When to visit your kingdom</h3>
+    <ul class="hours-list">
+      <li><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 9:00 PM</span></li>
+      <li><span class="hours-day">Tuesday</span><span class="hours-time">11:00 AM – 9:00 PM</span></li>
+      <li><span class="hours-day">Wednesday</span><span class="hours-time">11:00 AM – 9:00 PM</span></li>
+      <li><span class="hours-day">Thursday</span><span class="hours-time">11:00 AM – 9:00 PM</span></li>
+      <li><span class="hours-day">Friday</span><span class="hours-time">11:00 AM – 10:00 PM</span></li>
+      <li><span class="hours-day">Saturday</span><span class="hours-time">11:00 AM – 10:00 PM</span></li>
+      <li><span class="hours-day">Sunday</span><span class="hours-time">11:00 AM – 8:00 PM</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="cta-banner-content">
+    <h2>Your <em>crown</em> awaits.</h2>
+    <p>Reserve your table today and experience Mexican hospitality at its finest.</p>
+    <div class="hero-cta-group" style="justify-content: center;">
+      <a href="tel:4175986327" class="btn-primary">
+        Call to Reserve
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+      <a href="https://www.doordash.com/store/la-reina-margaritas-ozark-37861825/85911168/" class="btn-secondary" style="border-color: var(--cream); color: var(--cream);">Order on DoorDash</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="img/rtgg.webp" alt="La Reina Margaritas" class="nav-logo-img">
+        La Reina Margaritas
+      </div>
+      <p class="footer-tagline">Mexican Kitchen & Cantina &mdash; the best place to spend time with family in the heart of Ozark, Missouri.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/profile.php?id=61583819461745" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/lareinamargaritas2025/" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@lareinamargaritas?_r=1&_t=ZS-95dkqTO5Knk" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.83a8.16 8.16 0 004.77 1.52V6.93a4.85 4.85 0 01-1.84-.24z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#cantina">Cantina</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="https://maps.google.com/?q=1511+W+State+Hwy+J+Ozark+MO+65721">1511 W State Hwy J</a></li>
+        <li><a href="https://maps.google.com/?q=1511+W+State+Hwy+J+Ozark+MO+65721">Ozark, MO 65721</a></li>
+        <li><a href="tel:4175986327">(417) 598-6327</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Order</h4>
+      <ul>
+        <li><a href="https://www.doordash.com/store/la-reina-margaritas-ozark-37861825/85911168/">DoorDash Delivery</a></li>
+        <li><a href="#reserve">Reserve a Table</a></li>
+        <li><a href="mailto:royalservice@lareinamargaritas.com">Private Events</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 La Reina Margaritas. All rights reserved.</span>
+    <span>Made with ♛ in Ozark, MO</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.padding = '0.85rem 3rem';
+    } else {
+      nav.style.padding = '1.25rem 3rem';
+    }
+  });
+</script>
+
+<!-- ============ RESERVATION MODAL ============ -->
+<div class="res-overlay" id="resModal" role="dialog" aria-modal="true" aria-label="Reserve a Table">
+  <div class="res-modal">
+    <button class="res-close" id="resClose" aria-label="Close">&times;</button>
+    <div class="res-header">
+      <span class="res-eyebrow">La Reina Margaritas</span>
+      <h2 class="res-title">Reserve Your Table</h2>
+      <p class="res-sub">Fill in the details and we'll confirm your reservation.</p>
+    </div>
+    <form class="res-form" id="resForm" novalidate>
+      <div class="res-field">
+        <label for="resGuests">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          Number of Guests
+        </label>
+        <select id="resGuests" name="guests" required>
+          <option value="" disabled selected>Select guests</option>
+          <option value="1">1 person</option>
+          <option value="2">2 people</option>
+          <option value="3">3 people</option>
+          <option value="4">4 people</option>
+          <option value="5">5 people</option>
+          <option value="6">6 people</option>
+          <option value="7">7 people</option>
+          <option value="8">8 people</option>
+          <option value="9+">9+ people</option>
+        </select>
+      </div>
+      <div class="res-row">
+        <div class="res-field">
+          <label for="resDate">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Date
+          </label>
+          <input type="date" id="resDate" name="date" required>
+        </div>
+        <div class="res-field">
+          <label for="resTime">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Time
+          </label>
+          <select id="resTime" name="time" required>
+            <option value="" disabled selected>Select time</option>
+            <option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option>
+            <option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option>
+            <option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option>
+            <option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option>
+            <option>9:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="res-field">
+        <label for="resName">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Full Name
+        </label>
+        <input type="text" id="resName" name="name" placeholder="Your name" required>
+      </div>
+      <div class="res-field">
+        <label for="resContact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.11 12.7 19.79 19.79 0 012 4.07 2 2 0 014 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Phone Number
+        </label>
+        <input type="tel" id="resContact" name="contact" placeholder="(417) 000-0000" required>
+      </div>
+      <div class="res-field">
+        <label for="resNotes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Special Requests <span class="res-optional">(optional)</span>
+        </label>
+        <textarea id="resNotes" name="notes" placeholder="Allergies, celebrations, high chair needed…" rows="3"></textarea>
+      </div>
+      <button type="submit" class="res-submit">
+        <span class="res-submit-text">Confirm Reservation</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="res-success" id="resSuccess">
+      <div class="res-success-icon">✦</div>
+      <h3>Reservation Sent!</h3>
+      <p>We'll call you shortly to confirm your table. See you soon at La Reina!</p>
+      <button class="res-submit" onclick="closeModal()" style="margin-top:1.5rem">Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.res-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,5,0,0.72);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.res-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.res-modal {
+  background: var(--bone);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem 2.5rem 2rem;
+  position: relative;
+  transform: translateY(28px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 32px 80px rgba(26,5,0,0.35);
+}
+.res-overlay.open .res-modal {
+  transform: translateY(0) scale(1);
+}
+.res-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  background: var(--cream-warm);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.res-close:hover { background: var(--gold-soft); }
+.res-header { margin-bottom: 1.8rem; }
+.res-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.res-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.res-sub { color: var(--ink-soft); font-size: 0.92rem; }
+.res-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.res-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.res-field { display: flex; flex-direction: column; gap: 0.45rem; }
+.res-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.res-field label svg { color: var(--terracotta); flex-shrink: 0; }
+.res-optional { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.78rem; color: #999; }
+.res-field input,
+.res-field select,
+.res-field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--cream-warm);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.res-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234A1500' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+.res-field input:focus,
+.res-field select:focus,
+.res-field textarea:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px var(--shadow-warm);
+}
+.res-field textarea { resize: vertical; min-height: 80px; }
+.res-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: var(--terracotta);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 1rem 2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.25s, transform 0.2s;
+  font-family: 'Outfit', sans-serif;
+  width: 100%;
+}
+.res-submit:hover { background: var(--terracotta-deep); transform: translateY(-2px); }
+.res-submit:active { transform: translateY(0); }
+.res-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+.res-success.show { display: flex; }
+.res-success-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.res-success h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.res-success p { color: var(--ink-soft); line-height: 1.6; }
+@media (max-width: 500px) {
+  .res-modal { padding: 2rem 1.4rem 1.6rem; }
+  .res-row { grid-template-columns: 1fr; }
+  .res-title { font-size: 1.6rem; }
+}
+</style>
+
+<script>
+function openModal() {
+  document.getElementById('resModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('resDate').min = today;
+}
+function closeModal() {
+  document.getElementById('resModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('resClose').addEventListener('click', closeModal);
+document.getElementById('resModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Wire all "Reserve a Table" triggers
+document.querySelectorAll('a[href="#reserve"], .nav-cta').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    openModal();
+  });
+});
+
+document.getElementById('resForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(this);
+  const guests  = data.get('guests');
+  const date    = data.get('date');
+  const time    = data.get('time');
+  const name    = data.get('name');
+  const contact = data.get('contact');
+  const notes   = data.get('notes');
+
+  const body = encodeURIComponent(
+    'RESERVATION REQUEST\n' +
+    '-------------------\n' +
+    'Name: ' + name + '\n' +
+    'Guests: ' + guests + '\n' +
+    'Date: ' + date + '\n' +
+    'Time: ' + time + '\n' +
+    'Phone: ' + contact + '\n' +
+    (notes ? 'Notes: ' + notes + '\n' : '')
+  );
+  const subject = encodeURIComponent('Table Reservation - ' + name + ' (' + guests + ' guests, ' + date + ')');
+  window.location.href = 'mailto:royalservice@lareinamargaritas.com?subject=' + subject + '&body=' + body;
+
+  document.getElementById('resForm').style.display = 'none';
+  document.getElementById('resSuccess').classList.add('show');
+});
+</script>
+
+</body>
+</html>

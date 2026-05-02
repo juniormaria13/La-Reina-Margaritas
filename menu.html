@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — La Reina Margaritas · Ozark, MO</title>
+<meta name="description" content="Explore our full menu of authentic Mexican dishes — tacos, specialties, drinks and more at La Reina Margaritas in Ozark, MO.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --terracotta: #E8390E;
+  --terracotta-deep: #C42B00;
+  --gold: #FFB800;
+  --gold-soft: #FFD547;
+  --cream: #FFF8F0;
+  --cream-warm: #FFE8D0;
+  --bone: #FFFAF5;
+  --ink: #1A0500;
+  --ink-soft: #4A1500;
+  --shadow-warm: rgba(232,57,14,0.18);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Outfit',sans-serif;
+  background:var(--bone);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ====== NAV ====== */
+nav {
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  padding:1.25rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(245,239,227,0.88);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(138,47,26,0.08);
+  transition:padding 0.3s ease;
+}
+.nav-logo {
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:1.15rem;
+  color:var(--ink);
+  text-decoration:none;
+}
+.nav-logo img { width:42px; height:42px; object-fit:contain; }
+.nav-links { display:flex; gap:2.2rem; list-style:none; }
+.nav-links a {
+  font-size:0.82rem;
+  font-weight:500;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-decoration:none;
+  position:relative;
+  transition:color 0.2s;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute;
+  bottom:-3px; left:0;
+  width:0; height:2px;
+  background:var(--terracotta);
+  border-radius:2px;
+  transition:width 0.3s ease;
+}
+.nav-links a:hover { color:var(--terracotta); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width:100%; }
+.nav-links a.active { color:var(--terracotta); }
+.nav-cta {
+  background:var(--ink);
+  color:var(--cream);
+  padding:0.6rem 1.4rem;
+  border-radius:100px;
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:background 0.25s, transform 0.2s;
+}
+.nav-cta:hover { background:var(--terracotta); transform:translateY(-1px); }
+
+/* ====== HERO ====== */
+.menu-hero {
+  min-height:52vh;
+  display:flex;
+  align-items:center;
+  padding:0 0 0 4rem;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(120deg, var(--cream) 0%, var(--cream-warm) 55%, #fde8d0 100%);
+  margin-top:72px;
+}
+.menu-hero-blob {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.18;
+  pointer-events:none;
+}
+.menu-hero-blob:nth-child(1) { width:440px; height:440px; background:var(--terracotta); top:-100px; right:42%; }
+.menu-hero-blob:nth-child(2) { width:300px; height:300px; background:var(--gold); bottom:-40px; left:25%; }
+.menu-hero-content { position:relative; z-index:2; padding:4rem 0; flex:0 0 50%; }
+
+/* Hero image — right 50%, edge to edge */
+.menu-hero-img {
+  position:absolute;
+  top:0; right:0;
+  width:50%;
+  height:100%;
+  z-index:1;
+  overflow:hidden;
+}
+.menu-hero-img::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, var(--cream) 0%, transparent 18%);
+  z-index:2;
+  pointer-events:none;
+}
+.menu-hero-img img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:left top;
+  display:block;
+}
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  margin-bottom:1rem;
+}
+.eyebrow span { font-family:'Caveat',cursive; font-size:1.3rem; font-weight:400; letter-spacing:0; text-transform:none; }
+.menu-hero h1 {
+  font-family:'Fraunces',serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  line-height:1.05;
+  color:var(--ink);
+  font-style:italic;
+}
+.menu-hero h1 em { color:var(--terracotta); font-style:italic; }
+.menu-hero p {
+  margin-top:1.2rem;
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  max-width:420px;
+  line-height:1.7;
+}
+
+/* ====== MARQUEE ====== */
+.marquee-strip {
+  background:var(--terracotta);
+  color:#fff;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:0.85rem 0;
+}
+.marquee-track { display:inline-flex; animation:marquee 30s linear infinite; }
+.marquee-track span { font-size:0.76rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:0 2.5rem; }
+.marquee-track span.dot { color:var(--gold); font-size:1rem; padding:0; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ====== FILTER BAR ====== */
+.filter-section {
+  padding:3rem 4rem 1.5rem;
+  background:var(--bone);
+  position:sticky;
+  top:72px;
+  z-index:50;
+  border-bottom:1px solid var(--cream-warm);
+}
+.filter-bar {
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  flex-wrap:wrap;
+  max-width:1300px;
+  margin:0 auto;
+}
+.filter-label {
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-right:0.5rem;
+}
+.filter-btn {
+  background:none;
+  border:2px solid var(--cream-warm);
+  color:var(--ink-soft);
+  padding:0.5rem 1.2rem;
+  border-radius:100px;
+  font-size:0.8rem;
+  font-weight:600;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  transition:all 0.25s;
+}
+.filter-btn:hover { border-color:var(--terracotta); color:var(--terracotta); }
+.filter-btn.active {
+  background:var(--terracotta);
+  border-color:var(--terracotta);
+  color:#fff;
+}
+.filter-count {
+  font-size:0.7rem;
+  background:var(--cream-warm);
+  color:var(--ink-soft);
+  padding:0.15rem 0.5rem;
+  border-radius:100px;
+  margin-left:0.3rem;
+  font-weight:700;
+}
+.filter-btn.active .filter-count { background:rgba(255,255,255,0.25); color:#fff; }
+
+/* ====== MENU GRID ====== */
+.menu-body {
+  padding:3rem 4rem 6rem;
+  max-width:1400px;
+  margin:0 auto;
+}
+.menu-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:2rem;
+}
+
+/* ====== DISH CARD ====== */
+.dish-card {
+  background:var(--cream);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  outline:2px solid transparent;
+  cursor:pointer;
+  transition:transform 0.55s cubic-bezier(0.22,1,0.36,1),
+             box-shadow 0.55s cubic-bezier(0.22,1,0.36,1),
+             outline 0.3s ease,
+             opacity 0.4s ease;
+  opacity:0;
+  transform:translateY(20px);
+}
+.dish-card.visible { opacity:1; transform:translateY(0); }
+.dish-card.hidden-item {
+  display:none;
+}
+.dish-card:hover {
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 32px 72px var(--shadow-warm);
+  outline:2px solid var(--gold);
+}
+.dish-image {
+  aspect-ratio:4/3;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(135deg, var(--terracotta-deep), var(--ink));
+}
+.dish-image img {
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  display:block;
+}
+.dish-card:hover .dish-image img { transform:scale(1.1); }
+
+/* Placeholder for missing images */
+.dish-img-placeholder {
+  width:100%; height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg, var(--terracotta-deep) 0%, var(--ink) 100%);
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.1rem;
+  color:rgba(255,255,255,0.4);
+  letter-spacing:0.04em;
+  text-align:center;
+  padding:1rem;
+}
+
+.dish-tag {
+  position:absolute;
+  top:1rem; left:1rem;
+  background:var(--bone);
+  color:var(--terracotta);
+  padding:0.35rem 0.85rem;
+  border-radius:100px;
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  z-index:3;
+  transition:opacity 0.3s;
+}
+.dish-card:hover .dish-tag { opacity:0; }
+
+.dish-price-badge {
+  position:absolute;
+  top:1rem; right:1rem;
+  background:var(--gold);
+  color:var(--ink);
+  padding:0.35rem 0.85rem;
+  border-radius:100px;
+  font-size:0.8rem;
+  font-weight:700;
+  z-index:3;
+  transition:opacity 0.3s;
+}
+.dish-card:hover .dish-price-badge { opacity:0; }
+
+.dish-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(26,5,0,0.92) 0%, rgba(232,57,14,0.5) 55%, transparent 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:1.5rem;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity 0.45s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  z-index:2;
+}
+.dish-card:hover .dish-overlay { opacity:1; transform:translateY(0); }
+.dish-overlay-name {
+  font-family:'Fraunces',serif;
+  font-size:1.6rem;
+  color:#fff;
+  line-height:1.1;
+  font-style:italic;
+  margin-bottom:0.5rem;
+}
+.dish-overlay-price {
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--gold);
+  margin-bottom:0.8rem;
+}
+.dish-overlay-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  background:var(--gold);
+  color:var(--ink);
+  padding:0.5rem 1rem;
+  border-radius:100px;
+  font-size:0.7rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  width:fit-content;
+  transform:translateY(6px);
+  transition:transform 0.4s cubic-bezier(0.22,1,0.36,1) 0.05s;
+}
+.dish-card:hover .dish-overlay-btn { transform:translateY(0); }
+
+.dish-content { padding:1.4rem 1.4rem 1.6rem; }
+.dish-name {
+  font-family:'Fraunces',serif;
+  font-size:1.35rem;
+  color:var(--ink);
+  margin-bottom:0.4rem;
+  font-weight:500;
+}
+.dish-description {
+  color:var(--ink-soft);
+  font-size:0.88rem;
+  line-height:1.6;
+  margin-bottom:0.8rem;
+}
+.dish-footer {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.dish-price {
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--terracotta);
+  font-family:'Fraunces',serif;
+}
+
+/* ====== EMPTY STATE ====== */
+.menu-empty {
+  display:none;
+  text-align:center;
+  padding:4rem 2rem;
+  grid-column:1/-1;
+}
+.menu-empty.show { display:block; }
+.menu-empty p { font-size:1rem; color:var(--ink-soft); }
+
+/* ====== FOOTER ====== */
+.menu-footer {
+  background:var(--ink);
+  color:rgba(255,255,255,0.5);
+  text-align:center;
+  padding:2rem;
+  font-size:0.82rem;
+}
+.menu-footer a { color:var(--gold); text-decoration:none; }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width:1024px) {
+  .menu-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; }
+  .menu-hero { padding:0 1.5rem; min-height:40vh; }
+  .menu-hero-content { flex:1; padding:3rem 0; }
+  .menu-hero-img { width:45%; opacity:0.35; }
+  .filter-section { padding:1.5rem; }
+  .menu-body { padding:2rem 1.5rem 4rem; }
+  .menu-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav id="topNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/rtgg.webp" alt="La Reina Margaritas">
+    La Reina Margaritas
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#story">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="location.html">Location</a></li>
+  </ul>
+  <a href="index.html" class="nav-cta" id="reserveBtn">Reserve a Table</a>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="menu-hero">
+  <div class="menu-hero-blob"></div>
+  <div class="menu-hero-blob"></div>
+  <div class="menu-hero-content">
+    <p class="eyebrow">✦ La Reina Margaritas &nbsp;<span>come hungry,</span></p>
+    <h1>Dishes fit for <em>royalty.</em></h1>
+    <p>Bold, traditional, and prepared with the finest ingredients. Order online or visit us in Ozark, MO.</p>
+  </div>
+  <div class="menu-hero-img">
+    <img src="img/home.webp" alt="La Reina Margaritas dish">
+  </div>
+</section>
+
+<!-- ====== MARQUEE ====== -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Authentic Mexican Cuisine</span><span class="dot">✦</span>
+    <span>Handcrafted Margaritas</span><span class="dot">✦</span>
+    <span>Tacos · Burritos · Especialidades</span><span class="dot">✦</span>
+    <span>Order on DoorDash</span><span class="dot">✦</span>
+    <span>Ozark, Missouri</span><span class="dot">✦</span>
+    <span>Authentic Mexican Cuisine</span><span class="dot">✦</span>
+    <span>Handcrafted Margaritas</span><span class="dot">✦</span>
+    <span>Tacos · Burritos · Especialidades</span><span class="dot">✦</span>
+    <span>Order on DoorDash</span><span class="dot">✦</span>
+    <span>Ozark, Missouri</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ====== FILTERS ====== -->
+<div class="filter-section">
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All <span class="filter-count" id="countAll">13</span></button>
+    <button class="filter-btn" data-filter="appetizer">Appetizers <span class="filter-count">3</span></button>
+    <button class="filter-btn" data-filter="taco">Tacos <span class="filter-count">5</span></button>
+    <button class="filter-btn" data-filter="specialty">Specialties <span class="filter-count">4</span></button>
+    <button class="filter-btn" data-filter="drink">Drinks <span class="filter-count">1</span></button>
+  </div>
+</div>
+
+<!-- ====== MENU GRID ====== -->
+<div class="menu-body">
+  <div class="menu-grid" id="menuGrid">
+
+    <!-- APPETIZERS -->
+    <article class="dish-card" data-category="appetizer">
+      <div class="dish-image">
+        <span class="dish-tag">Appetizer</span>
+        <span class="dish-price-badge">$5.75</span>
+        <div class="dish-img-placeholder">Street Corn</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Street Corn</span>
+          <span class="dish-overlay-price">$5.75</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Street Corn</h3>
+        <p class="dish-description">Elote estilo mexicano cubierto con mayonesa, queso cotija, chile en polvo y limón fresco.</p>
+        <div class="dish-footer"><span class="dish-price">$5.75</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="appetizer">
+      <div class="dish-image">
+        <span class="dish-tag">Appetizer</span>
+        <span class="dish-price-badge">$8.00</span>
+        <div class="dish-img-placeholder">Famoso Queso Casero</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Famoso Queso Casero</span>
+          <span class="dish-overlay-price">$8.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Famoso Queso Casero</h3>
+        <p class="dish-description">Queso fundido artesanal preparado al momento, servido con tortillas de maíz frescas.</p>
+        <div class="dish-footer"><span class="dish-price">$8.00</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="appetizer">
+      <div class="dish-image">
+        <span class="dish-tag">Appetizer</span>
+        <span class="dish-price-badge">$7.00</span>
+        <div class="dish-img-placeholder">Tamale de Elote Trufado</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Tamale de Elote Trufado</span>
+          <span class="dish-overlay-price">$7.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Tamale de Elote Trufado</h3>
+        <p class="dish-description">Tamal de elote dulce con toque de trufa negra, crema mexicana y hierbas frescas.</p>
+        <div class="dish-footer"><span class="dish-price">$7.00</span></div>
+      </div>
+    </article>
+
+    <!-- TACOS -->
+    <article class="dish-card" data-category="taco">
+      <div class="dish-image">
+        <span class="dish-tag">Tacos</span>
+        <span class="dish-price-badge">$14.75</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/49-1.png" alt="Street Tacos Asada" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dish-img-placeholder" style="display:none">Street Tacos Asada</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Street Tacos Asada</span>
+          <span class="dish-overlay-price">$14.75</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Street Tacos Asada</h3>
+        <p class="dish-description">3 tacos de carne asada a la parrilla con cebolla, cilantro, guacamole y salsa. Servidos con arroz.</p>
+        <div class="dish-footer"><span class="dish-price">$14.75</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="taco">
+      <div class="dish-image">
+        <span class="dish-tag">Tacos</span>
+        <span class="dish-price-badge">$14.00</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/50-1.png" alt="Carnita Tacos" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dish-img-placeholder" style="display:none">Carnita Tacos</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Carnita Tacos</span>
+          <span class="dish-overlay-price">$14.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Carnita Tacos</h3>
+        <p class="dish-description">3 tacos de carnitas doradas con cebolla, cilantro y salsa verde. Servidos con arroz y frijoles.</p>
+        <div class="dish-footer"><span class="dish-price">$14.00</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="taco">
+      <div class="dish-image">
+        <span class="dish-tag">Tacos</span>
+        <span class="dish-price-badge">$15.00</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/51-1.png" alt="Puffy Tacos" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dish-img-placeholder" style="display:none">Puffy Tacos</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Puffy Tacos</span>
+          <span class="dish-overlay-price">$15.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Puffy Tacos</h3>
+        <p class="dish-description">Tacos de tortilla inflada frita rellenos de res, lechuga, tomate, crema y queso. Un clásico tex-mex elevado.</p>
+        <div class="dish-footer"><span class="dish-price">$15.00</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="taco">
+      <div class="dish-image">
+        <span class="dish-tag">Tacos</span>
+        <span class="dish-price-badge">$14.00</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/52-1.png" alt="Tacos al Pastor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dish-img-placeholder" style="display:none">Tacos al Pastor</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Tacos al Pastor</span>
+          <span class="dish-overlay-price">$14.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Tacos al Pastor</h3>
+        <p class="dish-description">3 tacos de pastor marinado en achiote con piña, cebolla y cilantro. Servidos con arroz.</p>
+        <div class="dish-footer"><span class="dish-price">$14.00</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="taco">
+      <div class="dish-image">
+        <span class="dish-tag">Tacos</span>
+        <span class="dish-price-badge">$13.00</span>
+        <div class="dish-img-placeholder">Tex-Mex</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Tex-Mex</span>
+          <span class="dish-overlay-price">$13.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Tex-Mex</h3>
+        <p class="dish-description">Tacos crujientes con carne de res sazonada, lechuga fresca, tomate, queso rallado y crema.</p>
+        <div class="dish-footer"><span class="dish-price">$13.00</span></div>
+      </div>
+    </article>
+
+    <!-- SPECIALTIES -->
+    <article class="dish-card" data-category="specialty">
+      <div class="dish-image">
+        <span class="dish-tag">Specialty</span>
+        <span class="dish-price-badge">$23.75</span>
+        <div class="dish-img-placeholder">Tampiquena Real</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Tampiquena Real</span>
+          <span class="dish-overlay-price">$23.75</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Tampiquena Real</h3>
+        <p class="dish-description">Carne tampiquena marinada a la parrilla con arroz, frijoles borrachos, ensalada y tortillas recién hechas.</p>
+        <div class="dish-footer"><span class="dish-price">$23.75</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="specialty">
+      <div class="dish-image">
+        <span class="dish-tag">Specialty</span>
+        <span class="dish-price-badge">$19.00</span>
+        <div class="dish-img-placeholder">El Real Molcajete</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">El Real Molcajete</span>
+          <span class="dish-overlay-price">$19.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">El Real Molcajete</h3>
+        <p class="dish-description">Molcajete volcánico con carnes mixtas asadas, cactus, queso panela, elote y salsa roja hirviente.</p>
+        <div class="dish-footer"><span class="dish-price">$19.00</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="specialty">
+      <div class="dish-image">
+        <span class="dish-tag">Traditional</span>
+        <span class="dish-price-badge">$16.75</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2025/11/b82a2d75-3242-4a4f-9a07-9d9247440829-e1763489420685-1024x844.jpeg" alt="Mole Poblano">
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Mole Poblano</span>
+          <span class="dish-overlay-price">$16.75</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Mole Poblano</h3>
+        <p class="dish-description">Pollo en mole tradicional con más de 20 ingredientes: chiles, chocolate, nueces y especias aromáticas. Con arroz y frijoles.</p>
+        <div class="dish-footer"><span class="dish-price">$16.75</span></div>
+      </div>
+    </article>
+
+    <article class="dish-card" data-category="specialty">
+      <div class="dish-image">
+        <span class="dish-tag">Must Try</span>
+        <span class="dish-price-badge">$16.00</span>
+        <img src="https://lareinamargaritas.com/wp-content/uploads/2026/04/Quesabirria-Tacos-LRM-2026-1024x683.jpg" alt="Quesabirria">
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Quesabirria</span>
+          <span class="dish-overlay-price">$16.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Quesabirria</h3>
+        <p class="dish-description">Birria de res lenta, queso fundido y tortilla dorada. Acompañada de consomé rico para dipear. Imperdible.</p>
+        <div class="dish-footer"><span class="dish-price">$16.00</span></div>
+      </div>
+    </article>
+
+    <!-- DRINKS -->
+    <article class="dish-card" data-category="drink">
+      <div class="dish-image">
+        <span class="dish-tag">Drink</span>
+        <span class="dish-price-badge">$4.00</span>
+        <div class="dish-img-placeholder">Mexican Coca‑Cola</div>
+        <div class="dish-overlay">
+          <span class="dish-overlay-name">Mexican Coca‑Cola</span>
+          <span class="dish-overlay-price">$4.00</span>
+          <span class="dish-overlay-btn">Order Now ✦</span>
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3 class="dish-name">Mexican Coca‑Cola</h3>
+        <p class="dish-description">Coca-Cola de botella de vidrio importada de México, endulzada con azúcar de caña real. La diferencia se siente.</p>
+        <div class="dish-footer"><span class="dish-price">$4.00</span></div>
+      </div>
+    </article>
+
+    <div class="menu-empty" id="menuEmpty">
+      <p>No items found in this category.</p>
+    </div>
+  </div>
+
+  <!-- ORDER CTA -->
+  <div style="text-align:center;margin-top:4rem;">
+    <p style="color:var(--ink-soft);margin-bottom:1.2rem;font-size:0.95rem;">Want to order for delivery or pickup?</p>
+    <a href="https://www.doordash.com/store/la-reina-margaritas-ozark-37861825/85911168/" target="_blank"
+       style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--terracotta);color:#fff;padding:1rem 2.2rem;border-radius:100px;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s;"
+       onmouseover="this.style.background='#C42B00';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='#E8390E';this.style.transform='translateY(0)'">
+      Order on DoorDash
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="menu-footer">
+  <p>© 2026 La Reina Margaritas · <a href="index.html">Back to Home</a> · <a href="location.html">Location & Hours</a></p>
+</div>
+
+<script>
+// Filter logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.dish-card[data-category]');
+const emptyMsg = document.getElementById('menuEmpty');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    let visible = 0;
+    cards.forEach(card => {
+      const matches = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('hidden-item', !matches);
+      if (matches) visible++;
+    });
+    emptyMsg.classList.toggle('show', visible === 0);
+  });
+});
+
+// Scroll reveal with stagger
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+cards.forEach(card => observer.observe(card));
+
+// Nav shrink
+window.addEventListener('scroll', () => {
+  document.getElementById('topNav').style.padding =
+    window.scrollY > 50 ? '0.85rem 3rem' : '1.25rem 3rem';
+});
+</script>
+</body>
+</html>
